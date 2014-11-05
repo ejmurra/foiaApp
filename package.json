@@ -1,0 +1,19 @@
+{
+  "name": "FoiaFiler",
+  "description": "Foia filing helper",
+  "author": "Eli Murray",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strongloop/express"
+  },
+  "README": "something",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "express": "^4.10.1",
+    "mail-listener2": "^0.1.7",
+    "mongoose": "^3.8.18",
+    "nodemailer": "^1.3.0",
+    "mail-listener2": "^0.1.7"
+  }
+}
