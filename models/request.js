@@ -13,7 +13,7 @@ var Request = db.model('Request', {
       date : { type: Date, required: true },
       attachments : [{ type: Object }]
     }
-  }
+  },
   mail : {
     from : { type: String, default: 'FoiaFiler'},
     to : { type: String, required: true },
@@ -21,5 +21,5 @@ var Request = db.model('Request', {
     text : { type: String, required: true },
     html : { type: String }
   }
-}
+})
 module.exports = Request

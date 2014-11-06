@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-app='foia'>
+  <div ng-controller='RequestsCtrl' class='container'>
+    <h1>Recent Requests</h1>
+    <form role='form'>
+      <div class='form-group'>
+        <div class='input-group'>
+          <input ng-model='postTime' class='form-control' />
+          <span class='input-group-btn'>
+            <button ng-click='makeRequest()' class='btn btn-default'>Make a request</button>
+          </span>
+        </div>
+      </div>
+    </form>
+    <ul class='list-group'>
+      <li ng-repeat='request in requests' class='list-group-item'>
+        <div ng-repeat='user in users'>
+          <strong>{{ user.personal.name }}</strong>
+          <span ng-if="!request.response"> requested </span>
+          <span ng-if="request.response"> received a response to </span>
+          <strong>{{ request.mail.subject }}</strong> on {{ request.date }}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div ng-controller='RequestsCtrl'>
+    {{ requests }}
+  </div>
+  <div ng-controller='RequestsCtrl'>
+    {{ users }}
+  </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script>
+    var app = angular.module('foia',[])
+
+    app.controller('RequestsCtrl', function ($scope, $http) {
+      $scope.makeRequest = function () {
+        if ($scope.postTime) {
+          $scope.requests.unshift({
+            parentUser: 'Charles Smith',
+            date: $scope.postTime,
+            response.replied: false
+
+          })
+          $scope.postTime = null
+        }
+      }
+      
+
+
+      // $http.get('http://localhost:3000/api/requests')
+      // .success(function (requests) {
+      //   $scope.requests = requests
+      // })
+      // $http.get('http://localhost:3000/api/users')
+      // .success(function (users) {
+      //   $scope.users = users
+      // })
+
+      // $scope.buildData = function() {
+      //   var returnArr = []
+      //   angular.forEach($scope.data)
+      // }
+
+
+
+    })
+
+  </script>
+
+</body>
+</html>

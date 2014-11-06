@@ -5,15 +5,19 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/strongloop/express"
+    "url": "https://github.com/ejmurra/foiaApp"
   },
   "README": "something",
   "dependencies": {
     "body-parser": "^1.9.2",
+    "cookie-parser": "^1.3.3",
     "express": "^4.10.1",
+    "express-session": "^1.9.1",
     "mail-listener2": "^0.1.7",
     "mongoose": "^3.8.18",
+    "morgan": "^1.4.1",
     "nodemailer": "^1.3.0",
-    "mail-listener2": "^0.1.7"
+    "nodemon": "^1.2.1",
+    "passport-local": "^1.0.0"
   }
 }
