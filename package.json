@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/strongloop/express"
+    "url": "https://github.com/ejmurra/foiaApp"
   },
   "README": "something",
   "dependencies": {
