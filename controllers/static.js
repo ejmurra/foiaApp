@@ -1,34 +1,12 @@
 var express = require('express')
-var bodyParser = require('body-parser')
-var cookieParser = require('cookie-parser')
-var passport = require('passport')
-var session = require('express-session')
-var router = express.Router()
-var key = 'thisisascretkey'
+var router = require('express').Router()
+var path = require('path')
 
-router.use(express.static(__dirname + '/../assets'))
-
-router.use(cookieParser());
-router.use(bodyParser.json({ extended: true }));
-
-router.use(session({ secret: key }));
-router.use(passport.initialize());
-router.use(passport.session());
-
-// Sessions
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
-
+router.use(express.static(path.resolve('./assets')))
 
 router.get('/', function (req, res) {
-  res.sendfile('layouts/requests.html')
+  var basePath = path.resolve
+  res.sendFile(path.resolve('./layouts/main.html'))
 })
 
 module.exports = router

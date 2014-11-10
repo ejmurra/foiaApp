@@ -4,39 +4,26 @@ var router = require('express').Router()
 router.get('/', function (req, res, next) {
   Request.find()
   .sort('-date')
-  .exec(function(err, posts) {
+  .exec(function(err, requests) {
     if (err) { return next(err) }
-    res.json(requests)
+    res.status(201).json(requests)
   })
 })
 
-router.post('/', function (req, res) {
+router.post('/', function (req, res, next) {
   var request = new Request({
-    parentUser : req.name,
-    date : Date.now,
-    response : {
-      replied : false,
-      reply : {
-        headers : null,
-        subject : null,
-        references : null,
-        inReplyTo : null,
-        text : null,
-        date : null,
-        attachments : null
-      }
-    },
-    mail : {
-      from : "foiafiler@illinimedia.com",
-      to : req.body.to,
-      subject : req.body.subject,
-      text : req.request.foia,
-      html : null
-    }
+    parentUser: req.body.parentUser, //req.user.username
+    response: false,
+    to: req.body.to,
+    subject: req.body.subject,
+    text: req.body.text,
+    html: null,
+    responseText: null,
+    attachment: null
   })
-  request.save(function (err, post) {
+  request.save(function (err, request) {
     if (err) { return next(err) }
-    res.Status(201).json(request)
+    console.log('saved request ' + req.body.subject)
   })
 })
 
