@@ -5,8 +5,14 @@ var Request = require('./models/request')
 var app = express()
 app.use(bodyParser.json())
 
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/layouts/main.html')
+})
+
 app.get('/api/requests', function (req, res, next) {
-  Request.find(function(err, requests) {
+  Request.find()
+  .sort('-date')
+  .exec(function(err, requests) {
     if (err) { return next(err) }
     res.status(201).json(requests)
   })
@@ -14,7 +20,7 @@ app.get('/api/requests', function (req, res, next) {
 
 app.post('/api/requests', function (req, res, next) {
   var request = new Request({
-    parentUser: 'dickeyxxx', //req.user.username
+    parentUser: req.body.parentUser, //req.user.username
     response: false,
     to: req.body.to,
     subject: req.body.subject,
@@ -25,8 +31,7 @@ app.post('/api/requests', function (req, res, next) {
   })
   request.save(function (err, request) {
     if (err) { return next(err) }
-    console.log('saved')
-    console.log(parentUser)
+    console.log('saved request ' + req.body.subject)
   })
 })
 

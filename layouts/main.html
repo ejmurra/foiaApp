@@ -27,15 +27,16 @@
 
     <!-- This is the requests list -->
     <ul class='list-group'>
-      <li ng-repeat='request in requests' class='list-group-item'>
+      <li ng-repeat='request in requests | orderBy: "-date"' class='list-group-item'>
         <div>
           <strong>{{ request.parentUser }}</strong>
           <span ng-if="!request.response"> requested </span>
           <span ng-if="request.response"> received a response to </span>
-          <strong>{{ request.subject }}</strong> on {{ request.date }}
+          <strong>{{ request.subject }}</strong> on <strong>{{ request.date }}</strong>
         </div>
       </li>
     </ul>
+
 
   <!-- This is for testing what data is being sent in -->
     {{ requests }}
@@ -44,11 +45,11 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
   <script>
     var app = angular.module('app',[])
-    app.controller('DataCtrl', function ($scope) {
+    app.controller('DataCtrl', function ($scope, $http) {
       $scope.makeRequest = function () {
         if ($scope.requestText) {
-          $scope.requests.unshift({
-            parentUser: 'dickeyxxx',
+          $http.post('/api/requests', {
+            parentUser: 'eli',
             date: Date.now,
             response: false,
             to: $scope.requestEmail,
@@ -57,40 +58,22 @@
             html: null,
             responseText: "This is what the request returned",
             attachment: "Find a way to handle attachments"
+          }).success(function (request) {
+            $scope.requests.unshift(request)
+            $scope.requestText = null
+            $scope.requestEmail = null
+            $scope.requestSubject = null
           })
-          $scope.requestText = null
-          $scope.requestEmail = null
-          $scope.requestSubject = null
         }
-
-
       }
 
-      $scope.requests = [
-      {
-        parentUser: 'dickeyxxx',
-        date: '10/24/2014',
-        response: false,
-        to: "this@email.com",
-        subject: "Sewage",
-        text: "This is my request",
-        html: null,
-        responseText: "This is what the request returned",
-        attachment: "Find a way to handle attachments"
-      },
-      {
-        parentUser: 'dickeyxxx',
-        date: '10/25/2014',
-        response: true,
-        to: "that@email.com",
-        subject: "Foia request",
-        text: "This is another request",
-        html: null,
-        responseText: "This is what the request returned",
-        attachment: "Find a way to handle attachments"
-      }
-    ]
-    $scope.users = [
+      $http.get('http://127.0.0.1:3000/api/requests')
+      .success(function (requests) {
+        console.log('getting requests')
+        $scope.requests = requests
+      })
+
+      $scope.users = [
       {
         username : "dickeyxxx",
         password : "pass",
