@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   var request = new Request({
-    parentUser: req.body.parentUser, //req.user.username
+    parentUser: '1',
     response: false,
     to: req.body.to,
     subject: req.body.subject,
@@ -21,9 +21,11 @@ router.post('/', function (req, res, next) {
     responseText: null,
     attachment: null
   })
+  request.parentUser = req.auth.username
   request.save(function (err, request) {
     if (err) { return next(err) }
     console.log('saved request ' + req.body.subject)
+    res.status(201).json(request)
   })
 })
 

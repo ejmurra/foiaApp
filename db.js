@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/foiaFiler', function () {
-  console.log('Touchdown on the moonbase')
+  console.log('connected')
 })
 module.exports = mongoose

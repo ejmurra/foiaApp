@@ -1,6 +1,6 @@
 var db = require('../db')
 var Request = db.model('Request', {
-  parentUser: {  type: String, required: true  },
+  parentUser: {  type: String },
   date: { type: Date, default: Date.now },
   response: { type: Boolean, default: false },
   to: { type: String, required: true },

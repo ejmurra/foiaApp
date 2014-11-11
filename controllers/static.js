@@ -3,6 +3,7 @@ var router = require('express').Router()
 var path = require('path')
 
 router.use(express.static(path.resolve('./assets')))
+router.use(express.static(path.resolve('./templates')))
 
 router.get('/', function (req, res) {
   var basePath = path.resolve

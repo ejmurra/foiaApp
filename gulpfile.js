@@ -14,4 +14,4 @@ gulp.task('dev:server', function () {
   })
 })
 
-gulp.task('dev', ['clean', 'watch:css', 'watch:js', 'dev:server'])
+gulp.task('dev', ['watch:css', 'watch:js', 'dev:server'])
