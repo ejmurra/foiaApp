@@ -1,12 +1,9 @@
 angular.module('app')
 .controller('DataCtrl', function ($scope, RequestsSvc) {
-  function (response) {
-    $scope.$emit('login', response.data)
-  }
   $scope.makeRequest = function () {
     if ($scope.requestText) {
       RequestsSvc.create({
-        parentUser: currentUser.username,
+        parentUser: $scope.currentUser.username,
         date: Date.now,
         response: false,
         to: $scope.requestEmail,
