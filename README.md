@@ -11,6 +11,7 @@ Enter the following commands in your *nix terminal:
 * `mongod`
 * `mkdir foiaFiler`
 * `cd foiaFiler`
+* `git clone <this repo>`
 * `sudo npm install`
 * `gulp dev`
 
