@@ -20,7 +20,7 @@ router.post('/', function (req, res, next) {
     email: req.body.email,
     nameFirst: req.body.nameFirst,
     nameLast: req.body.nameLast,
-    username: req.body.nameFirst + ' ' + req.body.nameLast,
+    username: req.body.username,
     addressLineOne: req.body.addressOne,
     addressLineTwo: req.body.addressTwo,
     city: req.body.city,
@@ -35,6 +35,7 @@ router.post('/', function (req, res, next) {
     user.save(function (err) {
       if (err) { return next(err) }
       res.sendStatus(201)
+      console.log('user created')
     })
   })
 })
