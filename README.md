@@ -19,7 +19,7 @@ Then point your browser to: `127.0.0.1:3000`
 
 TODO
 ====
-* Authenticate requests with user
+~~* Authenticate requests with user~~
 * Implement a show/hide div with request and response info when a user clicks on a request
 * Configure request email handling
 
