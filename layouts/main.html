@@ -3,6 +3,7 @@
 <head>
   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
   <link rel='stylesheet' href='/main.css'>
+
 </head>
 
 <body ng-app='app' ng-controller='ApplicationCtrl'>
@@ -11,6 +12,7 @@
       <ul class='nav navbar-nav'>
         <li><a href="/#/">Requests</a></li>
         <li><a href="/#/register">Register</a></li>
+        <li><a href="/#/request">Make a request</a></li>
         <li><a href="/#/login">Login</a></li>
       </ul>
       <p ng-if='currentUser' class='navbar-text navbar-right'>
@@ -23,6 +25,8 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="/main.js"></script>
 </body>
 </html>

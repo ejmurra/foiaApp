@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('RegisterCtrl', function ($scope, UserSvc) {
-  $scope.register = function (email, password, nameFirst, nameLast, addressLineOne, addressLineTwo, city, state, postal, organization, position) {
-    UserSvc.register(email, password, nameFirst, nameLast, addressLineOne, addressLineTwo, city, state, postal, organization, position)
+  $scope.register = function (email, password, nameFirst, nameLast, addressLineOne, addressLineTwo, city, state, postal, organization, position, phone) {
+    UserSvc.register(email, password, nameFirst, nameLast, addressLineOne, addressLineTwo, city, state, postal, organization, position, phone)
   }
 })

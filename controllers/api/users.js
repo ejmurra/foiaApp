@@ -21,13 +21,14 @@ router.post('/', function (req, res, next) {
     nameFirst: req.body.nameFirst,
     nameLast: req.body.nameLast,
     username: req.body.username,
-    addressLineOne: req.body.addressOne,
-    addressLineTwo: req.body.addressTwo,
+    addressLineOne: req.body.addressLineOne,
+    addressLineTwo: req.body.addressLineTwo,
     city: req.body.city,
     state: req.body.state,
     postal: req.body.postal,
     organization: req.body.organization,
-    position: req.body.position
+    position: req.body.position,
+    phone: req.body.phone
   })
   bcrypt.hash(req.body.password, 10, function (err, hash) {
     if (err) { return next(err) }

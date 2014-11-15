@@ -8,6 +8,7 @@ var Request = db.model('Request', {
   text: { type: String, required: true },
   html: { type: String },
   responseText: { type: String },
-  attachment: { type: String }
+  attachment: { type: String },
+  mail: { type: String }
 })
 module.exports = Request
