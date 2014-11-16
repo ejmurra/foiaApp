@@ -5,7 +5,7 @@ angular.module('app')
    return data.replace(/\n\r?/g, '<br />');
  }
 })
-.controller('DataCtrl', function ($scope, RequestsSvc, $location) {
+.controller('DataCtrl', function ($scope, RequestsSvc) {
   $scope.makeRequest = function () {
     if ($scope.requestText) {
       RequestsSvc.create({
@@ -31,7 +31,7 @@ angular.module('app')
             "Much appreciated,\n" +
             $scope.currentUser.username
       }).success(function (request) {
-        $scope.requests.unshift(request)
+
         $scope.requestText = null
         $scope.requestEmail = null
         $scope.requestSubject = null
@@ -40,5 +40,11 @@ angular.module('app')
   }
   RequestsSvc.fetch().success(function (requests) {
     $scope.requests = requests
+    $scope.$on('ws:new_request', function (_, request) {
+      $scope.$apply(function () {
+        $scope.requests.unshift(request)
+      })
+    })
   })
+
 })

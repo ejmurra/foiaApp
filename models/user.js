@@ -5,12 +5,13 @@ var user = db.Schema({
   username: { type: String, required: true },
   nameFirst: { type: String, required: true },
   nameLast: { type: String, required: true },
-  addressLineOne: { type: String },
+  addressLineOne: { type: String, required: true },
   addressLineTwo: { type: String },
   city: { type: String, required: true },
   state: { type: String, required: true },
   postal: { type: String, required: true },
   organization: { type: String, required: true },
-  position: { type: String, required: true }
+  position: { type: String, required: true },
+  phone: { type: String, required: true }
 })
 module.exports = db.model('User', user)
