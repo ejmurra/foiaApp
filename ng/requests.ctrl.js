@@ -40,11 +40,6 @@ angular.module('app')
   }
   RequestsSvc.fetch().success(function (requests) {
     $scope.requests = requests
-    $scope.$on('ws:new_request', function (_, request) {
-      $scope.$apply(function () {
-        $scope.requests.unshift(request)
-      })
-    })
   })
 
 })

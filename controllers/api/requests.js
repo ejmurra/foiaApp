@@ -1,7 +1,6 @@
 var Request = require('../../models/request')
 var router = require('express').Router()
 var User = require('../../models/user')
-var websockets = require('../../websockets')
 
 router.get('/', function (req, res, next) {
   Request.find()
@@ -30,11 +29,7 @@ router.post('/', function (req, res, next) {
   request.parentUser = req.auth.username
   request.save(function (err, request) {
     if (err) { return next(err) }
-    pubsub.publish('new_request', request)
     res.status(201).json(request)
-    pubsub.subscribe('new_request', function (request) {
-      websockets.broadcast('new_request', request)
-    })
   })
 })
 
