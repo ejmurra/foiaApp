@@ -1,0 +1,63 @@
+<div class='container'>
+
+  <!-- New Request Form -->
+  <h1>Make Request</h1>
+  <form role='form' class='container'>
+    <div class='form-group'>
+      <label>To</label>
+      <input ng-model='requestEmail' class='form-control' placeholder='Email:' />
+    </div>
+    <div class='form-group'>
+      <label>Subject</label>
+      <input ng-model='requestSubject' class='form-control' placeholder='Subject:' />
+    </div>
+    <div class='form-group'>
+      <label>Request Items</label>
+      <textarea rows='5' ng-model='requestText' class='form-control'></textarea>
+    </div>
+    <button ng-click='makeRequest()' class='btn btn-default btn-success btn-primary'>Make Request</button>
+  </form>
+
+  <!-- List all requests -->
+  <h1>Recent Requests</h1>
+  <ul class='list-group'>
+    <li class='list-group-item' ng-repeat='request in requests | orderBy: "-date"'>
+      <div class='item' ng-click='showDetails = !showDetails'>
+        <strong>{{request.username}}</strong>
+        <span ng-if='request.replied'> recieved a response to </span>
+        <span ng-if='!request.replied'> requested </span>
+        <strong>{{request.subject}}</strong> on <strong>{{request.date}}</strong>
+      </div>
+      <div class='itemExtend' ng-click='showDetails = !showDetails'>
+        <div class='row' ng-show='showDetails'>
+          <div class="panel panel-default col-md-6" style='margin-top: 20px;'>
+            <div class="panel-heading">
+              <h3 class="panel-title">Request:</h3>
+            </div>
+            <div class="panel-body" ng-bind-html='request.request | newLine'>
+              <span>{{ request.request }}</span>
+            </div>
+          </div>
+          <div class="panel panel-default col-md-6" style='margin-top: 20px;'>
+            <div class="panel-heading">
+              <h3 class="panel-title">Response:</h3>
+            </div>
+            <div class="panel-body">
+              <span>{{request.response}}</span>
+            </div>
+          </div>
+        </div>
+        <div class='row' ng-show='showDetails'>
+          <div class="panel panel-default col-md-12">
+            <div class="panel-heading">
+              <h3 class="panel-title">Attachments:</h3>
+            </div>
+            <div class="panel-body">
+              <span>{{request.attachment}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

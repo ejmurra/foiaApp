@@ -1,0 +1,40 @@
+{
+  "name": "foiaFiler",
+  "dependencies": {
+    "bcrypt": "^0.8.0",
+    "body-parser": "^1.10.1",
+    "express": "^4.10.7",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-concat": "^2.4.3",
+    "gulp-livereload": "^3.2.0",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-ng-annotate": "^0.4.3",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-sourcemaps": "^1.3.0",
+    "gulp-stylus": "^1.3.4",
+    "gulp-uglify": "^1.0.2",
+    "jwt-simple": "^0.2.0",
+    "lodash": "^2.4.1",
+    "mongoose": "^3.8.21",
+    "ws": "^0.6.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "0.1.0",
+  "description": "A tool for filing and logging FOIA requests",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/ejmurra/foiaApp"
+  },
+  "keywords": [
+    "FOIA",
+    "request",
+    "log"
+  ],
+  "author": "Eli Murray",
+  "license": "MIT"
+}
