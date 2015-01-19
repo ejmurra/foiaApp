@@ -26,7 +26,8 @@ router.post('/', function (req, res, next) {
     postal: req.body.postal,
     organization: req.body.organization,
     position: req.body.position,
-    phone: req.body.phone
+    phone: req.body.phone,
+    editor: req.body.editor
   })
   bcrypt.hash(req.body.password, 10, function (err, hash) {
     if (err) { return next(err) }

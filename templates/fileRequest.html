@@ -1,0 +1,23 @@
+<md-content class='md-padding'>
+  <div ng-if='currentUser'>
+    <h1>Make Request</h1>
+    <form role='form' class='container'>
+      <md-input-container>
+        <label>To</label>
+        <input ng-model='requestEmail' class='form-control' />
+      </md-input-container>
+      <md-input-container>
+        <label>Subject</label>
+        <input ng-model='requestSubject' class='form-control' />
+      </md-input-container>
+      <md-input-container>
+        <label>Request Items</label>
+        <textarea ng-model='requestText' class='form-control'></textarea>
+      </md-input-container>
+      <md-button ng-if='currentUser.editor' ng-click='makeRequest()' class='md-raised md-primary'>Make Request (as editor)</md-button>
+      <md-button ng-if='!currentUser.editor' ng-click='review()' class='md-raised md-accent md-hue-1'>Send for Review</md-button>
+    </form>
+  </div>
+  <div ng-if='!currentUser'>
+    <p style='text-align:center' class='md-padding'>Please login to file a request</p>
+</md-content>

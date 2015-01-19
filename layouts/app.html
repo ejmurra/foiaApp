@@ -1,25 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel='stylesheet' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+  <link rel="stylesheet" href="lib/angular-material.min.css">
+  <link rel="stylesheet" href="lib/default-theme.css">
   <link rel='stylesheet' href='/app.css'>
 </head>
-<body ng-app='app' ng-controller='ApplicationCtrl'>
-  <nav class='navbar navbar-default'>
-    <div class='container'>
-      <ul class='nav navbar-nav'>
-        <li><a href='/#/'>Requests</a></li>
-        <li><a href='/#/register'>Register</a></li>
-        <li><a href='/#/login'>Login</a></li>
-      </ul>
-      <p ng-if='currentUser' class='navbar-text navbar-right'>
-        Signed in as {{currentUser.username}}
-      </p>
+
+<body ng-app='app' layout='column' ng-controller='ApplicationCtrl' layout-fill>
+  <section layout='row' class='titleBar' ng-controller='LoginCtrl'>
+    <div style='padding:5px; padding-left:10px' layout='row' flex='66'><md-button ng-click='home()'><span class='blue'>FoiaFiler</span></md-button></div>
+    <div layout='row'  flex='33' ng-if='!currentUser'>
+      <form class="md-padding login" style='padding:5px' layout='row' ng-controller='LoginCtrl'ng-submit='login(email,password)'>
+        <md-input-container>
+          <label>Email</label>
+          <input ng-model="email" type='email'>
+        </md-input-container>
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="password" type="password">
+        </md-input-container>
+        <md-button type="submit" class="md-primary">Login</md-button>
+      </form>
     </div>
-  </nav>
-  <div ng-view></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js'></script>
+    <div ng-if='currentUser' layout='row' style='padding:5px' flex='33'>
+      <h3>Welcome, &nbsp; <span class='blue'>{{currentUser.username}}</span></h3> &nbsp; <md-button style='float:right' ng-click='logout()'>Logout</md-button>
+  </section>
+
+  <section layout="row" flex>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
+      <md-toolbar class="md-primary">
+        <h1 class="md-toolbar-tools">Navigation</h1>
+      </md-toolbar>
+      <md-content class="md-padding" ng-controller="LeftCtrl">
+        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+          Close Nav Panel
+        </md-button>
+        <md-list>
+          <md-list-item ng-repeat="page in content">
+            <md-list-content layout='row'>
+              <md-button ng-click="setPage(page)" flex>{{page}}</md-button>
+            </md-list-content>
+          </md-list-item>
+        </md-list>
+      </md-content>
+      <div ng-if='currentUser.editor'>
+        <md-toolbar class='md-accent'>
+          <h1 class='md-toolbar-tools' style='color:white'>Editor Panel</h1>
+        </md-toolbar>
+        <md-content class='md-padding' ng-controller='LeftCtrl'>
+          <md-list>
+            <md-list-item ng-repeat='page in editorContent'>
+              <md-list-content layout='row'>
+                <md-button ng-click="setPage(page)" flex>{{page}}</md-button>
+              </md-list-content>
+            </md-list-item>
+          </md-list>
+        </md-content>
+      </div>
+    </md-sidenav>
+
+    <md-content flex class="md-padding">
+      <div layout-fill>
+        <div ui-view></div>
+      </div>
+    </md-content>
+  </section>
+
+
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-ui-router.min.js"></script>
+
+
+  <!-- Angular Material Dependencies -->
+  <script src="https://cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-aria.min.js"></script>
+  <script src="lib/angular-material.min.js"></script>
+
   <script src='/app.js'></script>
 </body>
 </html>

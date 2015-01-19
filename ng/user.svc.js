@@ -17,21 +17,40 @@ angular.module('app')
     })
   }
   svc.register = function (email, password, nameFirst, nameLast, addressLineOne, addressLineTwo, city, state, postal, organization, position, phone) {
-    console.log(email, password, phone)
-    return $http.post('/api/users', {
-      email: email,
-      password: password,
-      username: nameFirst + ' ' + nameLast,
-      addressLineOne: addressLineOne,
-      addressLineTwo: addressLineTwo,
-      city: city,
-      state: state,
-      postal: postal,
-      organization: organization,
-      position: position,
-      phone: phone
-    }).then( function() {
-      return svc.login(email, password)
-    })
+    if (position == 'Editor') {
+      return $http.post('/api/users', {
+        email: email,
+        password: password,
+        username: nameFirst + ' ' + nameLast,
+        addressLineOne: addressLineOne,
+        addressLineTwo: addressLineTwo,
+        city: city,
+        state: state,
+        postal: postal,
+        organization: organization,
+        position: position,
+        phone: phone,
+        editor: true
+      }).success(function() {
+        return svc.login(email, password)
+      })
+    } else {
+      return $http.post('/api/users', {
+        email: email,
+        password: password,
+        username: nameFirst + ' ' + nameLast,
+        addressLineOne: addressLineOne,
+        addressLineTwo: addressLineTwo,
+        city: city,
+        state: state,
+        postal: postal,
+        organization: organization,
+        position: position,
+        phone: phone,
+        editor: null
+      }).success( function() {
+        return svc.login(email, password)
+      })
+    }
   }
 })

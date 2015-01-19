@@ -6,11 +6,11 @@ var ngAnnotate = require('gulp-ng-annotate')
 var livereload = require('gulp-livereload')
 
 gulp.task('js', function () {
-  gulp.src(['ng/module.js', 'ng/**/*.js'])
+  gulp.src(['ng/module.js', 'ng/routes.js', 'ng/**/*.js'])
   .pipe(sourcemaps.init())
   .pipe(concat('app.js'))
   .pipe(ngAnnotate())
-  .pipe(uglify())
+  //.pipe(uglify())
   .pipe(sourcemaps.write())
   .pipe(gulp.dest('assets'))
   .pipe(livereload())

@@ -1,10 +1,4 @@
 angular.module('app')
-.filter('newLine', function ($filter) {
-  return function(data) {
-    if (!data) return data;
-    return data.replace(/\n\r?/g, '<br>');
-  }
-})
 .controller('RequestsCtrl', function($scope, RequestsSvc) {
   $scope.makeRequest = function () {
     if ($scope.requestText) {

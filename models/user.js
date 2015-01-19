@@ -10,6 +10,7 @@ var user = db.Schema({
   postal: { type: String, required: true },
   organization: { type: String, required: true },
   position: { type: String, required: true },
-  phone: { type: String, required: true }
+  phone: { type: String, required: true },
+  editor: { type: Boolean }
 })
 module.exports = db.model('User', user)
