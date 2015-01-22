@@ -1,4 +1,16 @@
 <md-content class='md-padding'>
+  <h3>Filter Requests</h3>
+  <div layout='row'>
+    <md-input-container>
+      <label>Author</label>
+      <input type='text' ng-model='filter.username' />
+    </md-input-container>
+    <md-input-container>
+      <label>Subject</label>
+      <input type='text' ng-model='filter.subject' />
+    </md-input-container>
+    <md-checkbox ng-model='filter.replied'>Replied</md-checkbox>
+  </div>
   <h1>Recent Requests</h1>
   <md-list>
     <md-list-item ng-repeat='request in requests | orderBy: "-date"'>
@@ -19,6 +31,7 @@
             </p>
             <span>Request ID: {{ request._id }}</span>
           </div>
+          <md-divider></md-divider>
           <div class='row' ng-show='showDetails'>
             <div>
               <div>
