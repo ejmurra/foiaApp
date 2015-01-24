@@ -19,36 +19,24 @@
             </p>
             <span>Request ID: {{ request._id }}</span>
           </div>
-          <div class='row' ng-show='showDetails'>
-            <div>
-              <div>
-                <h3>Request:</h3>
-              </div>
-              <div ng-bind-html='request.request | newLine'>
-                <span>{{ request.request }}</span>
-              </div>
+          <div ng-show='showDetails' layout='column'>
+            <div class='md-padding'>
+              <h3>Request:</h3>
+              <p style='white-space: pre'>{{ request.request }}</p>
             </div>
-            <div>
-              <div>
-                <h3>Response:</h3>
-              </div>
-              <div>
-                <span>{{request.response}}</span>
-              </div>
+            <div class='md-padding'>
+              <h3>Response:</h3>
+              <p>{{request.response}}</p>
             </div>
-          </div>
-          <div ng-show='showDetails'>
-            <div>
-              <div>
-                <h3>Attachments:</h3>
-              </div>
-              <div>
-                <span>{{request.attachment}}</span>
-              </div>
+            <div class='md-padding'>
+              <h3>Attachments:</h3>
+              <p>{{request.attachment}}</p>
             </div>
           </div>
         </md-whiteframe>
       </md-item-content>
     </md-list-item>
+    <p>Requests: </p><span>{{requests}}</span>
+    <p>Reviews: </p><span>{{reviews}}</span>
   </md-list>
 </md-content>

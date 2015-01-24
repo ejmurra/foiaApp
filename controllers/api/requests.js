@@ -19,11 +19,12 @@ router.post('/', function (req, res, next) {
     replied: false,
     request: req.body.requestFull,
     response: 'awaiting response',
-    attachment: 'no attachment'
+    attachment: 'no attachment',
+    needsReview: req.body.needsReview
   })
   request.save(function (err, request) {
     if (err) { return next(err) }
-    websockets.broadcast('new_request', request)
+    websockets.broadcast('new_review', request)
     res.status(201).json(request)
   })
 })

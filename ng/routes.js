@@ -27,7 +27,7 @@ angular.module('app')
     name: 'review',
     url: 'review',
     templateUrl: 'review.html',
-    controller: 'ReviewCtrl'
+    controller: 'RequestsCtrl'
   },
   manage = {
     name: 'manage',

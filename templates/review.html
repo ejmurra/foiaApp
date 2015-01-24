@@ -1,0 +1,20 @@
+<md-content class='md-padding'>
+  <md-card class='md-padding' ng-repeat='review in reviews'>
+    <form role='form' layout='column'>
+      <h3>Request ID: {{review._id}}, {{review}}</h3>
+      <md-input-container>
+        <label>Email:</label>
+        <input type='text' ng-model='review.toEmail'\>
+      </md-input-container>
+      <md-input-container>
+        <label>Subject:</label>
+        <input type='text' ng-model='review.subject'\>
+      </md-input-container>
+      <md-input-container>
+        <label>Body:</label>
+        <textarea ng-model='review.request'></textarea>
+      </md-input-container>
+      <md-button ng-click='' class='md-raised md-accent md-hue-1'>Send request</md-button>
+    </form>
+  </md-card>
+</md-content>

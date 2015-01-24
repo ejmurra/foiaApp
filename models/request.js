@@ -7,6 +7,7 @@ var Request = db.model('Request', {
   replied: { type: Boolean, required: true },
   request: { type: String, required: true },
   response: { type: String },
-  attachment: { type: String }
+  attachment: { type: String },
+  needsReview: { type: Boolean, required: true }
 })
 module.exports = Request

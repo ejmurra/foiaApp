@@ -1,21 +1,20 @@
 <md-content class='md-padding'>
   <div ng-if='currentUser'>
     <h1>Make Request</h1>
-    <form role='form' class='container'>
+    <form role='form'>
       <md-input-container>
         <label>To</label>
-        <input ng-model='requestEmail' class='form-control' />
+        <input ng-model='request.email'/>
       </md-input-container>
       <md-input-container>
         <label>Subject</label>
-        <input ng-model='requestSubject' class='form-control' />
+        <input ng-model='request.subject'/>
       </md-input-container>
       <md-input-container>
         <label>Request Items</label>
-        <textarea ng-model='requestText' class='form-control'></textarea>
+        <textarea ng-model='request.text'></textarea>
       </md-input-container>
-      <md-button ng-if='currentUser.editor' ng-click='makeRequest()' class='md-raised md-primary'>Make Request (as editor)</md-button>
-      <md-button ng-if='!currentUser.editor' ng-click='review()' class='md-raised md-accent md-hue-1'>Send for Review</md-button>
+      <md-button ng-click='makeRequest()' class='md-raised md-accent md-hue-1'>Send for Review</md-button>
     </form>
   </div>
   <div ng-if='!currentUser'>
